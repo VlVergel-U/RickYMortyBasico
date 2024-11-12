@@ -1,0 +1,22 @@
+<div class="background-container"></div>
+<div class="content">
+  <div class="title">
+    <img src="https://i.pinimg.com/originals/1d/64/5d/1d645dd02dc5f6aaaa494ae2f80691bb.png" width="440" height="200" alt="">
+  </div>
+  <div class="carousel-container">
+    <button class="carousel-prev" (click)="move(-1)">&#10094;</button>
+    <div class="carousel">
+      <div class="poster" *ngFor="let character of visibleCharacters">
+        <div class="poster__image-container">
+          <div class="poster__image-perspective">
+            <div class="poster__image" [style.background-image]="'url(' + character.image + ')'">
+              <div class="poster__shine"></div>
+            </div>
+          </div>
+        </div>
+        <div class="poster__title">{{ character.name }}</div>
+      </div>
+    </div>
+    <button class="carousel-next" (click)="move(1)">&#10095;</button>
+  </div>
+</div>

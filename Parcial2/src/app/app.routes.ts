@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './pages/layout/layout.component';
 import path from 'path';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { protectionGuard } from './guards/protection.guard';
+import { NotFoundComponent } from './notfound/notfound.component';
+import { CharacterComponent } from './pages/character/character.component';
 
 export const routes: Routes = [
     {
@@ -13,13 +14,18 @@ export const routes: Routes = [
         component:LoginComponent
     },
     {
-        path: '',
-        component: LayoutComponent,
+        path: "home",
+        canActivate: [protectionGuard],
         children:[
             {
-                path: 'dashborad',
-                component: DashboardComponent
-            }
+                path: "character",
+                component: CharacterComponent
+            },
         ]
+    },
+    {
+        path: "**",
+        component: NotFoundComponent
     }
+
 ];

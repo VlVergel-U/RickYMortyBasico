@@ -1,0 +1,199 @@
+body {
+  background: #ccc;
+  color: #ececec;
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+em {
+  font-style: italic;
+  opacity: 0.5;
+  font-size: 50%;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .poster {
+    width: 200px;
+    margin: 0 15px; 
+    flex-shrink: 0;
+    text-align: center;
+  }
+  
+  .poster__image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .poster__title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+    font-size: 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: opacity 0.3s ease; 
+  }
+  
+  .carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .carousel-prev {
+    left: 10px;
+  }
+  
+  .carousel-next {
+    right: 10px;
+  }
+  
+
+.background-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 50px);
+  height: calc(100% + 50px);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://images7.alphacoders.com/633/thumb-1920-633221.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-filter: blur(15px);
+          filter: blur(15px);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+  padding: 65px 25px 25px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  padding: 25px 25px 65px;
+}
+.footer__heart {
+  font-size: 80%;
+  color: #b55168;
+}
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  padding: 35px 10px 45px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 50px;
+  z-index: 1;
+}
+
+.poster {
+  cursor: pointer;
+}
+.poster .poster__image-perspective {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: perspective(800px);
+          transform: perspective(800px);
+}
+.poster:hover .poster__image-container {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+.poster:hover .poster__image {
+  box-shadow: 0px 65px 120px -34px rgba(0, 0, 0, 0.5);
+}
+.poster:hover .poster__shine {
+  opacity: 1;
+}
+.poster:hover .poster__title {
+  top: 55px;
+  opacity: 1;
+}
+.poster__image-container {
+  position: relative;
+  z-index: 2;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+}
+.poster__image {
+  position: relative;
+  width: 225px;
+  height: 350px;
+  background: #000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: box-shadow 300ms;
+}
+.poster__shine {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  width: 90%;
+  padding-top: 90%;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-filter: blur(25px);
+          filter: blur(25px);
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.poster__title {
+  position: relative;
+  top: -20px;
+  font-size: 20px;
+  opacity: 0;
+  text-align: center;
+  z-index: 1;
+  transition: top 300ms, opacity 200ms;
+}
