@@ -1,7 +1,8 @@
+<div class="background-container"></div>
 <div class="login-container">
     <div class="wrapper">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
-            <h1>Login</h1>
+            <h1>Rick and Morty</h1>
             <div *ngIf="errorMessage" class="alert alert-danger">
                 {{ errorMessage }}
             </div>

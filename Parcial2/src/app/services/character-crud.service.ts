@@ -7,7 +7,7 @@ import { characterInterface } from '../interfaces/character-interface';
 })
 export class CharacterCrudService {
   private characterListSubject = new BehaviorSubject<characterInterface[]>([]);
-  public characterList = this.characterListSubject.asObservable();
+  public characterList$ = this.characterListSubject.asObservable();
 
   addCharacter(character: characterInterface): void {
     const currentList = this.characterListSubject.getValue();
@@ -27,6 +27,7 @@ export class CharacterCrudService {
     this.characterListSubject.next(updatedList);
   }
 
+  // Nuevo método para obtener el valor actual del characterListSubject
   getCurrentCharacterList(): characterInterface[] {
     return this.characterListSubject.getValue();
   }

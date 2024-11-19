@@ -1,22 +1,47 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
+
 <div class="background-container"></div>
 <div class="content">
+  <button class="add-character-btn" (click)="openModal(false)">Agregar Personaje</button>
+  <button class="close-sesion" (click)="closeSesion()">Cerrar sesión</button>
   <div class="title">
     <img src="https://i.pinimg.com/originals/1d/64/5d/1d645dd02dc5f6aaaa494ae2f80691bb.png" width="440" height="200" alt="">
   </div>
   <div class="carousel-container">
     <button class="carousel-prev" (click)="move(-1)">&#10094;</button>
     <div class="carousel">
-      <div class="poster" *ngFor="let character of visibleCharacters">
-        <div class="poster__image-container">
-          <div class="poster__image-perspective">
+      <div class="poster" 
+     *ngFor="let character of visibleCharacters" 
+     (mouseenter)="character.hovered = true" 
+     (mouseleave)="character.hovered = false">
+    <div class="poster__image-container">
+        <div class="poster__image-perspective">
             <div class="poster__image" [style.background-image]="'url(' + character.image + ')'">
-              <div class="poster__shine"></div>
+                <div class="poster__overlay" *ngIf="character.hovered">
+                    <button class="delete-button" (click)="deleteCharacter(character.id)">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="update-button" (click)="openModal(true, character)">
+                        <span class="material-icons">edit_square</span>
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="poster__title">{{ character.name }}</div>
-      </div>
     </div>
+    <div class="poster__title">{{ character.name }}</div>
+</div>
+
     <button class="carousel-next" (click)="move(1)">&#10095;</button>
   </div>
+
+
+  <app-popup
+    *ngIf="showModal"
+    [isEditMode]="isEditMode"
+    [character]="selectedCharacter"
+    (save)="handleSave($event)"
+    (close)="closeModal()">
+  </app-popup>
+
 </div>

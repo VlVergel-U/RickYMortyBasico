@@ -2,15 +2,19 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 export const protectionGuard: CanActivateFn = (route, state) => {
- const router = inject(Router)
- console.log("pase por el guard")
- let token = localStorage.getItem("token")
- console.log(token);
+  const router = inject(Router);
 
- if (token === null) {
-  router.navigateByUrl("/");
-  return false;
-}
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const token = localStorage.getItem('token');
 
-    return true;
+    if (token) {
+      return true;
+    } else {
+      router.navigateByUrl('/login');
+      return false;
+    }
+  } else {
+    router.navigateByUrl('/login');
+    return false;
+  }
 };

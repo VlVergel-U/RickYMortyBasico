@@ -1,0 +1,21 @@
+<div class="modal-backdrop">
+    <div class="modal">
+      <h2 class="modal-title">{{ isEditMode ? 'Editar Personaje' : 'Agregar Personaje' }}</h2>
+      <form (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input id="name" [(ngModel)]="character.name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="image">URL Imagen</label>
+          <input id="image" [(ngModel)]="character.image" name="image" required />
+        </div>
+        <div class="button-group">
+          <button class="btn-primary" type="submit">{{ isEditMode ? 'Actualizar' : 'Agregar' }}</button>
+          <button class="btn-secondary" type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      </form>
+    </div>
+  </div>
+  

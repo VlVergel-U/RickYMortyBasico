@@ -34,7 +34,7 @@ export class LoginComponent {
       this.authService.getToken(email, password).subscribe(
         (res: any) => {
           localStorage.setItem('token', res["access_token"]);
-          this.router.navigate(['/home/character']);
+          this.router.navigate(['/home']);
           this.errorMessage = null; 
         },
         error => {

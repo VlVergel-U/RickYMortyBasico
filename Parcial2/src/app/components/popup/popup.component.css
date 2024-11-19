@@ -1,0 +1,105 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 150, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: radial-gradient(circle, #1b1b3a, #252550);
+    border: 3px solid #00d9ff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00e5ff, 0 0 40px rgba(0, 200, 255, 0.3);
+    color: #f0f0f0;
+    padding: 25px;
+    max-width: 500px;
+    width: 90%;
+    z-index: 1100;
+  }
+  
+  .modal-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    color: #00e1ff;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 2px solid #00ddff;
+    border-radius: 5px;
+    background: #1c1c3b;
+    color: #ffffff;
+    outline: none;
+  }
+  
+  input:focus {
+    border-color: #2290ff;
+    box-shadow: 0 0 8px #2290ff;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #00d5ff;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #22a7ff;
+    color: #fff;
+    box-shadow: 0 0 10px #227aff;
+  }
+  
+  .btn-secondary {
+    background-color: #ff2922;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #ff4000;
+    color: #fff;
+    box-shadow: 0 0 10px #ff4000;
+  }
+  
+  .error-message {
+    margin-top: 10px;
+    color: #ff4444;
+    text-align: center;
+    font-weight: bold;
+  }
+  

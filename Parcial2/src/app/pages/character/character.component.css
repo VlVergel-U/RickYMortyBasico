@@ -1,52 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: 'VT323', monospace;
+}
+
 body {
   background: #ccc;
   color: #ececec;
   min-height: 100vh;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
 }
 
 em {
-  font-style: italic;
   opacity: 0.5;
   font-size: 50%;
 }
+.update-button, .delete-button {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  position: relative;
+}
+
+.update-button span, .delete-button span {
+  font-size: 36px; 
+}
+
+.delete-button{
+  color: #b55168;
+}
+
+.update-button{
+  color: #02b1c8;
+}
+
+.close-sesion {
+  background-color: #9e10b7;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  align-items: flex-start;
+  font-weight: bold;
+  display: flex;
+  position: absolute; 
+  top: 20px; 
+  left: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(139, 50, 222, 0.5);
+}
+
+.close-sesion:hover{
+  background-color: #8f0da6;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(139, 50, 222, 0.5);
+}
+
+.add-character-btn {
+  background-color: #32de84;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  align-items: flex-start;
+  font-weight: bold;
+  display: flex;
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(50, 222, 132, 0.5);
+}
+
+.add-character-btn:hover {
+  background-color: #29b372;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(50, 222, 132, 0.7);
+}
 
 .carousel-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  width: 80%;
+  height: auto;
+  padding: 40px 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+  overflow: visible; 
+}
   
   .poster {
-    width: 200px;
+    width: 225px;
     margin: 0 15px; 
     flex-shrink: 0;
     text-align: center;
+    border: 2px solid #00ddff;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    background: #111;
+  }
+
+  .poster {
+    cursor: pointer;
+    transition: transform 300ms ease-in-out;
   }
   
-  .poster__image {
+  .poster:hover {
+    transform: scale(1.25);
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 8px 20px 5px rgba(66, 236, 255, 0.5);
+  }
+
+  .poster__overlay {
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+  .poster__overlay button:hover {
+      transform: scale(1.2);
   }
-  
+
   .poster__title {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 30px;
-    font-size: 10px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    color: #00ddff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     visibility: visible !important;
     opacity: 1 !important;
     transition: opacity 0.3s ease; 
@@ -56,21 +151,30 @@ em {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: #00ddff;
     border: none;
-    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #1b1b1b;
+    font-size: 18px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
   }
+
+  .carousel-prev:hover, .carousel-next:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 221, 255, 0.7); 
+}
   
   .carousel-prev {
-    left: 10px;
+    left: -20px;
   }
   
   .carousel-next {
-    right: 10px;
+    right: -20px;
   }
-  
+
 
 .background-container {
   position: fixed;
@@ -98,71 +202,7 @@ em {
   z-index: 1;
 }
 
-.title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 300;
-  padding: 65px 25px 25px;
-}
 
-.footer {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 300;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  padding: 25px 25px 65px;
-}
-.footer__heart {
-  font-size: 80%;
-  color: #b55168;
-}
-.footer a {
-  color: inherit;
-  text-decoration: none;
-}
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.grid {
-  position: relative;
-  display: grid;
-  padding: 35px 10px 45px;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 50px;
-  z-index: 1;
-}
-
-.poster {
-  cursor: pointer;
-}
-.poster .poster__image-perspective {
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transform: perspective(800px);
-          transform: perspective(800px);
-}
-.poster:hover .poster__image-container {
-  -webkit-transform: scale(1.25);
-          transform: scale(1.25);
-}
-.poster:hover .poster__image {
-  box-shadow: 0px 65px 120px -34px rgba(0, 0, 0, 0.5);
-}
-.poster:hover .poster__shine {
-  opacity: 1;
-}
-.poster:hover .poster__title {
-  top: 55px;
-  opacity: 1;
-}
-.poster__image-container {
-  position: relative;
-  z-index: 2;
-  transition: -webkit-transform 300ms;
-  transition: transform 300ms;
-  transition: transform 300ms, -webkit-transform 300ms;
-}
 .poster__image {
   position: relative;
   width: 225px;
@@ -170,24 +210,12 @@ em {
   background: #000;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   overflow: hidden;
   transition: box-shadow 300ms;
 }
-.poster__shine {
-  position: absolute;
-  top: 25%;
-  left: 5%;
-  width: 90%;
-  padding-top: 90%;
-  background: rgba(255, 255, 255, 0.3);
-  -webkit-filter: blur(25px);
-          filter: blur(25px);
-  pointer-events: none;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 300ms;
-}
+
 .poster__title {
   position: relative;
   top: -20px;
